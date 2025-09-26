@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: hubble_postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - hubble_network
+
+  adminer:
+    image: adminer:latest
+    container_name: hubble_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - hubble_network
+
+volumes:
+  postgres_data:
+
+networks:
+  hubble_network:
+    driver: bridge

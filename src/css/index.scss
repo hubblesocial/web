@@ -1,0 +1,24 @@
+@use "theme";
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, sans-serif;
+}
+
+/* Flex container for sidebar + main */
+.app-container {
+  display: flex;
+  height: 100vh; /* full viewport height */
+  width: 100vw;  /* full viewport width */
+}
+
+/* Main content styling */
+main {
+  flex-grow: 1;             /* take remaining space */
+  padding: 2rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-y: auto;
+}
