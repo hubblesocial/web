@@ -3,7 +3,7 @@ import Sidebar from '../components/singles/Navbar';
 
 const SearchPage: React.FC = () => {
   useEffect(() => {
-    document.title = `Search - Hubble`;
+    document.title = `Search - Axioris`;
   }, []);
 
   return (
@@ -11,7 +11,7 @@ const SearchPage: React.FC = () => {
       <Sidebar activeId="search" isAuthenticated />
       <main>
         <h1>Search</h1>
-        <p>Welcome to Hubble!</p>
+        <p>Welcome to Axioris!</p>
       </main>
     </div>
   );

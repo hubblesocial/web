@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     image: postgres:15
-    container_name: hubble_postgres
+    container_name: axioris_postgres
     restart: always
     env_file:
       - .env
@@ -16,20 +16,20 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - hubble_network
+      - axioris_network
 
   adminer:
     image: adminer:latest
-    container_name: hubble_adminer
+    container_name: axioris_adminer
     restart: always
     ports:
       - "8080:8080"
     networks:
-      - hubble_network
+      - axioris_network
 
 volumes:
   postgres_data:
 
 networks:
-  hubble_network:
+  axioris_network:
     driver: bridge

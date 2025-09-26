@@ -20,14 +20,14 @@ const ErrorPage: React.FC<ErrorPageProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = `${code} - Hubble`;
+    document.title = `${code} - Axioris`;
   }, [code]);
 
   return (
     <div className="err-container">
-      <div className="err-hubble-logo">
-        <img src={logoSrc} className="logo" alt={`Hubble Logo`} />
-        <span>Hubble</span>
+      <div className="err-axioris-logo">
+        <img src={logoSrc} className="logo" alt={`Axioris Logo`} />
+        <span>Axioris</span>
       </div>
       <h1 className="error-code">{code}</h1>
       <h3 className="error-msg">{message}</h3>

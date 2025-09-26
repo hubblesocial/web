@@ -3,7 +3,7 @@ import Sidebar from '../components/singles/Navbar';
 
 const HomePage: React.FC = () => {
   useEffect(() => {
-    document.title = `Home - Hubble`;
+    document.title = `Home - Axioris`;
   }, []);
 
   return (
@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
       <Sidebar activeId="home" isAuthenticated />
       <main>
         <h1>Home</h1>
-        <p>Welcome to Hubble!</p>
+        <p>Welcome to Axioris!</p>
       </main>
     </div>
   );

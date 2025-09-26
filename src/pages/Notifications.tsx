@@ -3,7 +3,7 @@ import Sidebar from '../components/singles/Navbar';
 
 const NotificationsPage: React.FC = () => {
   useEffect(() => {
-    document.title = `Notifications - Hubble`;
+    document.title = `Notifications - Axioris`;
   }, []);
 
   return (
@@ -11,7 +11,7 @@ const NotificationsPage: React.FC = () => {
       <Sidebar activeId="notifications" />
       <main>
         <h1>Notifications</h1>
-        <p>Welcome to Hubble!</p>
+        <p>Welcome to Axioris!</p>
       </main>
     </div>
   );

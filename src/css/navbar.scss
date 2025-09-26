@@ -1,6 +1,5 @@
 @use "theme";
 
-/* Sidebar layout */
 nav.sidebar {
   position: fixed;
   top: 0;
@@ -14,11 +13,10 @@ nav.sidebar {
   background-color: var(--bg-secondary);
   border-right: 1px solid var(--border-color);
   z-index: 1000;
-  box-sizing: border-box; /* ensures padding is included in height */
+  box-sizing: border-box;
 
-  /* Top navigation items */
   > .top {
-    flex-grow: 1; /* ensures top takes remaining space */
+    flex-grow: 1;
     overflow-y: auto;
 
     .nav-vertical {
@@ -55,13 +53,12 @@ nav.sidebar {
     }
   }
 
-  /* Bottom buttons */
   > .bottom {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     margin-top: auto;
-    padding-bottom: 1rem; /* prevent clipping on bottom */
+    padding-bottom: 1rem;
 
     .create-thread-btn,
     .login-btn,
@@ -86,6 +83,7 @@ nav.sidebar {
       background-color: var(--primary-color);
       color: var(--text-primary);
       border: none;
+      text-decoration: none;
 
       &:hover {
         background-color: var(--primary-dark);
@@ -115,13 +113,45 @@ nav.sidebar {
       }
     }
   }
+
+  .brand {
+    margin-bottom: 1.5rem;
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: var(--bg-primary);
+        color: var(--primary-color);
+      }
+
+      .brand-logo {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+
+      .brand-text {
+        line-height: 1;
+      }
+    }
+  }
 }
 
-/* Main content */
 main {
-  margin-left: 20vw; /* leave space for fixed sidebar */
+  margin-left: 20vw;
   height: 100vh;
-  padding: 2rem 3rem; /* top/bottom + left/right */
+  padding: 2rem 3rem;
   background-color: var(--bg-primary);
   overflow-y: auto;
 }

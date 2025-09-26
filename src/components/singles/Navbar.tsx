@@ -31,12 +31,24 @@ const Sidebar: React.FC<NavbarProps> = ({
   isAuthenticated = false,
 }) => (
   <nav className="sidebar d-flex flex-column p-2">
+    <div className="brand mb-3">
+      <LinkContainer to="/">
+        <Nav.Link className="brand-link d-flex align-items-center">
+          <img
+            src="/logo.png"
+            alt="Axioris Logo"
+            className="brand-logo"
+          />
+          <span className="brand-text">Axioris</span>
+        </Nav.Link>
+      </LinkContainer>
+    </div>
+
     <div className="top flex-grow-1">
       <Nav className="flex-column nav-vertical">
         {navItems.map(({ id, to, icon, label }) => (
           <LinkContainer key={id} to={to}>
             <Nav.Link className={activeId === id ? 'active' : ''}>
-              <span style={{ display: 'inline-flex', alignItems: 'center' }}></span>
               {React.cloneElement(icon, { style: { marginRight: '0.75rem' } })}
               {label}
             </Nav.Link>
