@@ -1,22 +1,77 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
-  email    String  @unique
-  password String
+  id          String   @id @default(uuid()) // UUID primary key
+  username    String   @unique
+  email       String   @unique
+  password    String
+  bio         String?  // optional bio
+  level       Int      @default(1) // XP/level system
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lastLogin   DateTime? 
+  isVerified  Boolean  @default(false)
+
+  posts       Post[]    // relation to posts
+  likes       Like[]    // relation to likes
+  settings    UserSettings?
+  profile     Profile?
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  displayName String?
+  avatar    String?
+  location  String?
+  website   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  title      String?
+  slug       String?  @unique
+  content    String   // can be base64 if needed
+  media      Json?    // optional JSON field for images/videos
+  likesCount Int      @default(0)
+  viewsCount Int      @default(0)
+  isPinned   Boolean  @default(false)
+  isPrivate  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  likes      Like[]
+}
+
+model Like {
+  user   User  @relation(fields: [userId], references: [id])
+  userId String
+  post   Post  @relation(fields: [postId], references: [id])
+  postId String
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId]) // composite primary key
+}
+
+model UserSettings {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @unique
+  theme       String   @default("light")
+  notifications Json?  // JSON for notification preferences
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
