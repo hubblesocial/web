@@ -8,7 +8,7 @@ const SearchPage: React.FC = () => {
 
   return (
     <div className="app-container">
-      <Sidebar activeId="search" isAuthenticated />
+      <Sidebar activeId="search" />
       <main>
         <h1>Search</h1>
         <p>Welcome to Axioris!</p>

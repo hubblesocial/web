@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="app-container">
-      <Sidebar activeId="home" isAuthenticated />
+      <Sidebar activeId="home" />
       <main>
         <h1>Home</h1>
         <p>Welcome to Axioris!</p>

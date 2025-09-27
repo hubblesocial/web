@@ -8,7 +8,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div className="app-container">
-      <Sidebar activeId="profile" isAuthenticated />
+      <Sidebar activeId="profile" />
       <main>
         <h1>Profile</h1>
         <p>Welcome to Axioris!</p>

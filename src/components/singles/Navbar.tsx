@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, Button } from 'react-bootstrap';
+import { useAuth } from '../../contexts/AuthContext';
 import {
   HouseFill,
   Search,
@@ -16,7 +17,6 @@ import CreatePostModal from '../CreatePostModal';
 
 interface NavbarProps {
   activeId?: 'home' | 'search' | 'notifications' | 'profile' | 'settings';
-  isAuthenticated?: boolean;
 }
 
 const allNavItems = [
@@ -27,15 +27,21 @@ const allNavItems = [
   { id: 'settings', to: '/settings', icon: <GearFill />, label: 'Settings' },
 ] as const;
 
-const Sidebar: React.FC<NavbarProps> = ({ activeId = 'home', isAuthenticated = false }) => {
+const Sidebar: React.FC<NavbarProps> = ({ activeId = 'home' }) => {
   const [isMobile, setIsMobile] = useState(window.innerHeight > window.innerWidth);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const { user, loading } = useAuth();
+  const isAuthenticated = !!user;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerHeight > window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  if (loading) {
+    return null;
+  }
 
   // MOBILE VERSION
   if (isMobile) {

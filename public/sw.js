@@ -1,6 +1,6 @@
 // sw.js
 const CACHE_NAME = 'axioris-cache-v1';
-const urlsToCache = ['/logo.png', '/fonts/roboto.woff2'];
+const urlsToCache = ['/logo.png', '/fonts/roboto.woff2', '/account/login', '/account/register'];
 
 self.addEventListener('install', event => {
   event.waitUntil(

@@ -36,6 +36,11 @@
 body[data-theme="dark"] {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  input,
+  label,
+  textarea {
+    color: #888;
+  }
 }
 
 /* ------------------ LIGHT THEME ------------------ */

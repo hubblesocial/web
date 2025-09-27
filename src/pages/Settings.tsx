@@ -1,17 +1,31 @@
 import React, { useEffect } from 'react';
 import Sidebar from '../components/singles/Navbar';
 import { Card, Form, Button, Tabs, Tab } from 'react-bootstrap';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import '../css/settings.scss';
 
 const SettingsPage: React.FC = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = `Settings - Axioris`;
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/account/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
+
   return (
     <div className="app-container d-flex">
-      <Sidebar activeId="settings" isAuthenticated />
-      <main className="settings-main flex-grow-1 p-4">
+      <Sidebar activeId="settings" />
+      <main className="settings-main flex-grow-1 p-6">
         <h1 className="mb-4">Settings</h1>
         <Tabs defaultActiveKey="profile" className="mb-3">
           <Tab eventKey="profile" title="Profile">
@@ -55,7 +69,7 @@ const SettingsPage: React.FC = () => {
           </Tab>
         </Tabs>
         <Form className="mt-4">
-          <Button type="submit" variant="danger">Logout</Button>
+          <Button type="button" variant="danger" onClick={handleLogout}>Logout</Button>
         </Form>
       </main>
     </div>
