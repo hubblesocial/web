@@ -12,6 +12,7 @@ import {
   GearFill,
 } from 'react-bootstrap-icons';
 import '../../css/navbar.scss';
+import CreatePostModal from '../CreatePostModal';
 
 interface NavbarProps {
   activeId?: 'home' | 'search' | 'notifications' | 'profile' | 'settings';
@@ -28,6 +29,7 @@ const allNavItems = [
 
 const Sidebar: React.FC<NavbarProps> = ({ activeId = 'home', isAuthenticated = false }) => {
   const [isMobile, setIsMobile] = useState(window.innerHeight > window.innerWidth);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerHeight > window.innerWidth);
@@ -88,15 +90,21 @@ const Sidebar: React.FC<NavbarProps> = ({ activeId = 'home', isAuthenticated = f
 
       <div className="bottom mt-auto d-flex flex-column gap-2">
         {isAuthenticated ? (
-          <LinkContainer to="/post/create">
+            <>
             <Button
               variant="primary"
               className="create-thread-btn d-flex align-items-center justify-content-center w-100"
+              onClick={() => setShowCreateModal(true)}
             >
               <Feather className="me-2" />
               Create Thread
             </Button>
-          </LinkContainer>
+            <CreatePostModal
+              show={showCreateModal}
+              onHide={() => setShowCreateModal(false)}
+              csrfToken="" // need to work on this later
+            />
+            </>
         ) : (
           <>
             <LinkContainer to="/account/login">
