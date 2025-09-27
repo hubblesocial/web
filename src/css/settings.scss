@@ -1,0 +1,86 @@
+.settings-main {
+  color: var(--text-primary);
+
+  h1 {
+    color: var(--text-primary);
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+
+    .nav-link {
+      color: var(--text-secondary);
+      background-color: transparent;
+      border: none;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s;
+
+      &:hover {
+        color: var(--primary-color);
+        background-color: var(--bg-primary);
+      }
+
+      &.active {
+        color: var(--primary-color);
+        font-weight: 600;
+        border: none;
+        border-bottom: 2px solid var(--primary-color);
+        background-color: transparent;
+      }
+    }
+  }
+
+  .card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+
+    .card-header {
+      background-color: var(--bg-primary);
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .card-body {
+      color: var(--text-primary);
+    }
+  }
+
+  .form-label {
+    color: var(--text-primary);
+  }
+
+  .form-control,
+  .form-select {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: #b52a37;
+      border-color: #b52a37;
+    }
+  }
+}

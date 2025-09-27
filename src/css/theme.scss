@@ -1,2 +1,69 @@
-@forward "themes/light.theme";
-@forward "themes/dark.theme";
+:root {
+  // Brand accents (same across themes)
+  --primary-color: #0d6efd;
+  --primary-dark: #0b5ed7;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+}
+
+/* ------------------ DARK THEME ------------------ */
+[data-theme="dark"] {
+  // Base colors
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #333;
+
+  // Components
+  --navbar-bg: #1f1f1f;
+  --navbar-text: #ffffff;
+  --card-bg: #2a2a2a;
+  --card-border: #404040;
+
+  // Form elements
+  --input-bg: #333333;
+  --input-border: #404040;
+  --input-text: #e0e0e0;
+
+  // States
+  --hover-bg: #2c2c2c;
+  --active-bg: #3a3a3a;
+}
+
+body[data-theme="dark"] {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ------------------ LIGHT THEME ------------------ */
+[data-theme="light"] {
+  // Base colors
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --border-color: #dee2e6;
+
+  // Components
+  --navbar-bg: #f1f3f5;
+  --navbar-text: #212529;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+
+  // Form elements
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --input-text: #212529;
+
+  // States
+  --hover-bg: #f1f3f5;
+  --active-bg: #e9ecef;
+}
+
+body[data-theme="light"] {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
